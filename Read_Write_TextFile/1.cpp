@@ -65,13 +65,13 @@ int main()
 		"a+"	Opens for readingand appending.The appending operation includes the removal of the EOF marker before new data is written to the file.The EOF marker isn't restored after writing is completed. Creates the file if it doesn't exist.*/
 
 
-	//SetConsoleOutputCP(65001);
+	SetConsoleOutputCP(65001);
 
-	//char filename[MAX_PATH];
-	//cout << "Введіть шлях до файлу" << endl;///////    ../Files/1.txt   папка віше
-	//cin >> filename;
+	char filename[MAX_PATH];
+	cout << "Введіть шлях до файлу" << endl;///////    ../Files/1.txt   папка віше
+	cin >> filename;
 
-	//getchar();
+	getchar();
 
 	const char* filename = "1.txt";
 
@@ -89,11 +89,14 @@ int main()
 		perror("Error opening 2");
 		return 0;
 	}
-	char buffer[300];
+	char buffer[300];//256
 	while(!feof(f1))////////пока не достигли конца файла, возвращает 0,
 					//////когда пытается читать за пределами конца файла - возвращает не 0
 	{
+		///fgets - зчитування по одній строчці
 		fgets(buffer, 300, f1);////////////читает последовательно 300 символов из файла в буфер, затем в цикле следующие 300 символов
+
+
 		Sleep(1000);///1sec
 		cout<<buffer<<endl;
 		
@@ -107,7 +110,7 @@ int main()
 
 
 
-	//return 0;
+	return 0;
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -127,6 +130,30 @@ int main()
 	//{
 	//	cout << "A2 (" << A2->x << ", " << A2->y << ")" << endl;
 	//}
+
+
+	////// fgetc - зчитування по одному символу
+
+	FILE* in = fopen("1.txt", "r");
+	
+
+	if (in == NULL ) {
+		printf("error\n");
+		return 1;
+	}
+
+	
+	
+	char ch;
+
+	while ((ch = fgetc(in)) != EOF) {
+		cout << ch << endl;
+		Sleep(500);
+	}
+
+
+
+	fclose(in);
 
 
 }
