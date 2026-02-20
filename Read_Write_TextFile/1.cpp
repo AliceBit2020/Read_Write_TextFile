@@ -156,7 +156,26 @@ int main()
 	fclose(in);
 
 
+
+	char* str1 = new char[5] {"abc"};
+	char* str2 = new char[5] {"def"};
+
+	if (strcmp(str1, str2)==0)
+	{
+		cout << "str1=str2" << endl;
+	}
+	else if (strcmp(str1, str2) >0)
+	{
+		cout << "str1>str2" << endl;
+	}
+	else if (strcmp(str1, str2) <0)
+	{
+		cout << "str1<str2" << endl;
+	}
+
+
 }
+
 
 
 ///
